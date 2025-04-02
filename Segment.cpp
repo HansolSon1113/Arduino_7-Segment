@@ -1,11 +1,12 @@
 #include "Segment.h"
 #include "Arduino.h"
 
-Segment::Segment(int *_seg) {
+Segment::Segment(int _type, int *_seg) {
   for (int i = 0; i < 8; i++) {
     pinMode(_seg[i], OUTPUT);
   }
 
+  type = _type;
   seg = _seg;
 }
 
@@ -72,12 +73,12 @@ void Segment::Do(int num) {
 
 void Segment::AllOff() {
   for (int i = 0; i < 8; i++) {
-    digitalWrite(seg[i], LOW);
+    digitalWrite(seg[i], type);
   }
 }
 
 void Segment::On(int *onSeg, int size) {
   for (int i = 0; i < size; i++) {
-    digitalWrite(seg[onSeg[i]], HIGH);
+    digitalWrite(seg[onSeg[i]], !type);
   }
 }

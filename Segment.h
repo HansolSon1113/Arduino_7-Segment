@@ -4,11 +4,12 @@
 class Segment {
 private:
   const int *seg;
+  int type;
   void AllOff();
   void On(int *onSeg, int size);
 
 public:
-  Segment(int *_seg);
+  Segment(int type, int *_seg);
 
   void Do(int num);
 };
